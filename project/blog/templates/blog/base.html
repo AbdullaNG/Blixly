@@ -10,6 +10,24 @@
 	</title>
 </head>
 <body>
+	<a href="{% url 'blog-home' %}" class="btn btn-dark">Home</a>
+	{% if user.is_authenticated %}
+	<a href="{% url 'profile' %}" class="btn btn-dark">Profile</a>
+	<form action="{% url 'logout' %}" method="post">
+			{% csrf_token %}
+			<button type="submit" class="btn btn-dark">Logout</button>
+		</form>
+	{% else %}
+		<a href="{% url 'login' %}" class="btn btn-dark">Login</a>
+		<a href="{% url 'register' %}" class="btn btn-dark">Register</a>
+	{% endif %}
+
+	{% for message in messages %}
+		<div class="alert alert-success">
+			{{ message }}
+		</div>
+	{% endfor %}
+
 	{% block content %}
 	{% endblock content %}
 
