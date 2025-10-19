@@ -1,0 +1,8 @@
+.bg-container {
+	background-image: url('images/blog.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+	min-height: 750px;
+	width: 100%;
+}

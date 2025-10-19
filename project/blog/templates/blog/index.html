@@ -1,13 +1,45 @@
 {% extends 'blog/base.html' %}
+{% load static %}
 
 {% block title %}
 	Homepage
 {% endblock title %}
 
 {% block content %}
-	{% for post in posts %}
-		<h1>{{ post.title }}</h1>
-		<p>{{ post.content }}</p>
-		<p>Posted by {{ post.author }} on {{ post.date_posted }}</p>
-	{% endfor %}
+	<div class="bg-container">
+		<div class="text-center fw-bold" style="padding-top: 350px; font-size: 5rem;">Blixly</div>
+		<div class="text-center fs-4">Where clarity meets insight</div>
+	</div>
+	<div class="container-fluid my-4">
+		{% for post in posts %}
+			<div class="row">
+				<div class="col"></div>
+				<div class="col-9">
+					<div class="my-3 p-3  rounded" style="background-color: #fffdd0;">
+						<div class="d-flex flex-row mb-3">
+							<div class="p-1">
+								<img src="{% static 'images/chad.jpg' %}" alt="image" class="border rounded-circle" style="width: 50px; height: 50px;">
+							</div>
+							<div class="p-1 mt-2">
+								<a href="#" class="h6 text-decoration-none">{{ post.author }}</a>
+							</div>
+						</div>
+						<a href="#" class="text-decoration-none link-dark">
+							<h2 class="fw-bold">{{ post.title }}</h2>
+							<h4>{{ post.content }}</h4>
+						</a>
+						<div class="mt-4 text-muted h6">{{ post.date_posted }}</div>
+					</div>
+				</div>
+				<div class="col"></div>
+			</div>
+		{% endfor %}
+			<div class="row">
+				<div class="col"></div>
+				<div class="col-9">
+					<a href="#" class="btn btn-secondary">See more</a>
+				</div>
+				<div class="col"></div>
+			</div>
+	</div>
 {% endblock content %}
