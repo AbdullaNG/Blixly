@@ -5,8 +5,11 @@
 {% endblock title %}
 
 {% block content %}
+<div class="mt-5 col-lg-8 mx-auto">
 	<h1>You have been logged out!</h1>
+	<hr>
 	<small>
 		<a href="{% url 'login' %}">Login again</a>
 	</small>
+</div>
 {% endblock content %}

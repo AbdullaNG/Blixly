@@ -6,13 +6,19 @@
 {% endblock title %}
 
 {% block content %}
-	<form method="POST">
-		{% csrf_token %}
-		<fieldset>
-			<legend>Register</legend>
-			{{ form|crispy }}
-		</fieldset>
-		<button type="submit">Register</button>
-	</form>
-	<small>Already have an account? <a href="{% url 'login' %}">Log In</a></small>
+<div class="mt-5 col-lg-8 mx-auto py-5 px-2">
+	<div class="p-3 bg-light rounded">
+		<form method="POST">
+			{% csrf_token %}
+			<fieldset>
+				<legend>Register</legend>
+				<hr>
+				{{ form|crispy }}
+			</fieldset>
+			<button class="btn btn-primary" type="submit">Register</button>
+		</form>
+		<hr>
+		<small>Already have an account? <a href="{% url 'login' %}">Log In</a></small>
+	</div>
+</div>
 {% endblock content %}
