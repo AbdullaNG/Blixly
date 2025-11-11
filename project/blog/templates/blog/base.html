@@ -31,6 +31,9 @@
 					{% if user.is_authenticated %}
 						<ul class="navbar-nav ms-auto">
 							<li class="nav-item">
+								<a href="{% url 'post-add' %}" class="nav-link">New Post</a>
+							</li>
+							<li class="nav-item">
 								<a href="{% url 'profile' %}" class="nav-link">Profile</a>
 							</li>
 							<li class="nav-item">
@@ -55,15 +58,15 @@
 		</div>
 	</header>
 
-	<div class="mt-3 mx-5">
-		{% for message in messages %}
-			<div class="alert alert-success mt-5">
-				{{ message }}
-			</div>
-		{% endfor %}
-	</div>
-
+	
 	<main>
+		<div class="mt-3 mx-5">
+			{% for message in messages %}
+				<div class="alert alert-success mt-5">
+					{{ message }}
+				</div>
+			{% endfor %}
+		</div>
 		{% block content %}
 		{% endblock content %}
 	</main>
