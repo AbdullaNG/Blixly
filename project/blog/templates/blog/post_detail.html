@@ -2,5 +2,39 @@
 {% load static %}
 
 {% block title %}
-	post/<int:pk>
+	{{ post.title }}
 {% endblock title %}
+
+{% block content %}
+<div class="container mt-5 pt-5">
+	<div class="row">
+		<div class="col"></div>
+		<div class="col-10">
+			<div class="my-3 p-3 rounded" style="background-color: #fffdd0;">
+				<div class="d-flex flex-row mb-3">
+					<div class="p-1">
+						<img src="{{ post.author.profile.image.url }}" alt="image" class="border rounded-circle" style="width: 50px; height: 50px;">
+					</div>
+					<div class="p-1 mt-2">
+						<a href="#" class="h6 text-decoration-none">{{ post.author }}</a>
+					</div>
+					{% if user == object.author %}
+					<div class="p-1 mt-2 ms-auto">
+						<a href="{% url 'post-update' post.pk %}" class="btn btn-primary">Update</a>
+					</div>
+					<div class="p-1 mt-2">
+						<a href="{% url 'post-delete' post.pk %}" class="btn btn-danger">Delete</a>
+					</div>
+					{% endif %}
+				</div>
+				<a href="#" class="text-decoration-none link-dark">
+					<h2 class="fw-bold">{{ post.title }}</h2>
+					<h4>{{ post.content }}</h4>
+				</a>
+				<div class="mt-4 text-muted h6">{{ post.date_posted }}</div>
+			</div>
+		</div>
+		<div class="col"></div>
+	</div>
+</div>
+{% endblock %}
