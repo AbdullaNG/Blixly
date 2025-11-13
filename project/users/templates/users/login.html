@@ -15,7 +15,12 @@
 				<hr>
 				{{ form|crispy }}
 			</fieldset>
-			<button class="btn btn-primary" type="submit">Login</button>
+			<div>
+				<button type="submit" class="btn btn-primary">Login</button>
+				<small class="ms-2">
+					<a href="{% url 'password_reset' %}">Forgot Password?</a>
+				</small>
+			</div>
 		</form>
 		<hr>
 		<small>Need an account? <a href="{% url 'register' %}">Register</a></small>
