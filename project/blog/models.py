@@ -8,6 +8,10 @@ class Post(models.Model):
 	content = models.TextField()
 	author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
 	date_posted = models.DateTimeField(auto_now_add=True)
+	likes = models.ManyToManyField(User, related_name='likes', blank=True)
+
+	def number_of_likes(self):
+		return self.likes.count()
 
 	def get_absolute_url(self):
 		return reverse('post-detail', kwargs={'pk': self.pk})

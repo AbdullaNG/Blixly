@@ -21,14 +21,41 @@
 								<img src="{{ post.author.profile.image.url }}" alt="image" class="border rounded-circle" style="width: 50px; height: 50px;">
 							</div>
 							<div class="p-1 mt-2">
-								<a href="#" class="h6 text-decoration-none">{{ post.author }}</a>
+								<a href="{% url 'author-posts' post.author.username %}" class="h6 text-decoration-none">{{ post.author }}</a>
 							</div>
 						</div>
 						<a href="{% url 'post-detail' post.pk %}" class="text-decoration-none link-dark">
 							<h2 class="fw-bold mb-3">{{ post.title }}</h2>
 						</a>
 						<h4>{{ post.content }}</h4>
-						<div class="mt-4 text-muted h6">{{ post.date_posted }}</div>
+						<div class="mt-4 text-muted h6 d-flex flex-row">
+							<div>{{ post.date_posted }}</div>
+							<div class="ms-auto d-flex flex-row">
+								<div class="flex-item">
+									<form action="{% url 'post-like' post.pk %}" method="post">
+										{% csrf_token %}
+										{% if user in post.likes.all %}
+											<button type="submit" class="btn btn-dark">
+												<img src="{% static 'images/like-fill.png' %}" style="width: 30px; height: 30px;">
+												<span style="color: #0D6EFD; font-weight: bold;">
+													{{ post.number_of_likes }}
+												</span>
+											</button>
+										{% else %}
+											<button type="submit" class="btn btn-dark">
+												<img src="{% static 'images/like.png' %}" style="width: 30px; height: 30px;">
+												<span style="color: #0D6EFD; font-weight: bold;">
+													{{ post.number_of_likes }}
+												</span>
+											</button>
+										{% endif %}
+									</form>
+								</div>
+								<div class="mt-2 text-white flex-item">
+									
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 				<div class="col"></div>

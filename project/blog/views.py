@@ -1,9 +1,11 @@
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Post, Comment
 from .forms import CommentForm
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 
 class PostListView(ListView):
@@ -20,6 +22,18 @@ class PostsListView(ListView):
 	context_object_name = 'posts'
 	ordering = ['-date_posted']
 	paginate_by = 5
+
+
+class AuthorPostsListView(ListView):
+	model = Post
+	template_name ='blog/author_posts.html'
+	context_object_name = 'author_posts'
+	ordering = ['-date_posted']
+	paginate_by = 5
+
+	def get_queryset(self):
+		user = get_object_or_404(User, username=self.kwargs.get('username'))
+		return Post.objects.filter(author=user).order_by('-date_posted')
 
 
 def post_detail(request, pk):
@@ -92,6 +106,19 @@ class CommentDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 	def get_context_data(self, **kwargs):
 		return super().get_context_data(**kwargs)
+
+
+@login_required
+def like_post(request, pk):
+	post = get_object_or_404(Post, pk=pk)
+	user = request.user
+
+	if user in post.likes.all():
+		post.likes.remove(user)
+	else:
+		post.likes.add(user)
+
+	return redirect('blog-home')
 
 
 def about(request):
