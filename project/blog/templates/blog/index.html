@@ -15,7 +15,7 @@
 			<div class="row">
 				<div class="col"></div>
 				<div class="col-10">
-					<div class="my-3 p-3 rounded" style="background-color: #fffdd0;">
+					<div class="my-3 p-3 rounded" style="background-color: #fffdd0; word-wrap: break-word; overflow-wrap: break-word;">
 						<div class="d-flex flex-row mb-3">
 							<div class="p-1">
 								<img src="{{ post.author.profile.image.url }}" alt="image" class="border rounded-circle" style="width: 50px; height: 50px;">
@@ -25,9 +25,9 @@
 							</div>
 						</div>
 						<a href="{% url 'post-detail' post.pk %}" class="text-decoration-none link-dark">
-							<h2 class="fw-bold">{{ post.title }}</h2>
-							<h4>{{ post.content }}</h4>
+							<h2 class="fw-bold mb-3">{{ post.title }}</h2>
 						</a>
+						<h4>{{ post.content }}</h4>
 						<div class="mt-4 text-muted h6">{{ post.date_posted }}</div>
 					</div>
 				</div>

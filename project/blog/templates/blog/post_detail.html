@@ -1,4 +1,5 @@
 {% extends 'blog/base.html' %}
+{% load crispy_forms_tags %}
 {% load static %}
 
 {% block title %}
@@ -10,15 +11,15 @@
 	<div class="row">
 		<div class="col"></div>
 		<div class="col-10">
-			<div class="my-3 p-3 rounded" style="background-color: #fffdd0;">
+			<div class="my-3 p-3 rounded" style="background-color: #fffdd0; word-wrap: break-word; overflow-wrap: break-word;">
 				<div class="d-flex flex-row mb-3">
 					<div class="p-1">
 						<img src="{{ post.author.profile.image.url }}" alt="image" class="border rounded-circle" style="width: 50px; height: 50px;">
 					</div>
-					<div class="p-1 mt-2">
-						<a href="#" class="h6 text-decoration-none">{{ post.author }}</a>
+					<div class="p-1 mt-3">
+						<h6>{{ post.author }}</h6>
 					</div>
-					{% if user == object.author %}
+					{% if user == post.author %}
 					<div class="p-1 mt-2 ms-auto">
 						<a href="{% url 'post-update' post.pk %}" class="btn btn-primary">Update</a>
 					</div>
@@ -28,10 +29,48 @@
 					{% endif %}
 				</div>
 				<a href="#" class="text-decoration-none link-dark">
-					<h2 class="fw-bold">{{ post.title }}</h2>
-					<h4>{{ post.content }}</h4>
+					<h2 class="fw-bold mb-3">{{ post.title }}</h2>
 				</a>
+				<h4>{{ post.content }}</h4>
 				<div class="mt-4 text-muted h6">{{ post.date_posted }}</div>
+			</div>
+			<div class="my-3 p-3 rounded" style="background-color: #fffdd0; word-wrap: break-word; overflow-wrap: break-word;">
+				<h2>Add comment</h2>
+				<hr>
+				<form method="post">
+					{% csrf_token %}
+					{{ comment_form|crispy }}
+					{% if user.is_authenticated %}
+					<button class="btn btn-primary" type="submit">Post Comment</button>
+					{% else %}
+					<a href="{% url 'login' %}" class="btn btn-primary">Post Comment</a>
+					{% endif %}
+				</form>
+			</div>
+			<div class="my-3 p-3 rounded" style="background-color: #fffdd0; word-wrap: break-word; overflow-wrap: break-word;">
+				<h2>Comments</h2>
+				<hr>
+				{% for comment in comments %}
+				<div class="my-3 p-3 border rounded" style="background-color: whitesmoke; word-wrap: break-word; overflow-wrap: break-word;">
+					<div class="d-flex flex-row mb-3">
+						<div class="p-1">
+							<img src="{{ comment.author.profile.image.url }}" alt="image" class="border rounded-circle" style="width: 50px; height: 50px;">
+						</div>
+						<div class="p-1 mt-2">
+							<a href="#" class="h6 text-decoration-none">{{ comment.author }}</a>
+						</div>
+						{% if user == comment.author %}
+						<div class="p-1 mt-2 ms-auto">
+							<a href="{% url 'comment-delete' comment.pk %}" class="btn btn-danger">Delete</a>
+						</div>
+						{% endif %}
+					</div>
+					<h4>{{ comment.content }}</h4>
+					<div class="mt-4 text-muted h6">{{ comment.created_at }}</div>
+				</div>
+				{% empty %}
+				<h4>No comments yet.</h4>
+				{% endfor %}
 			</div>
 		</div>
 		<div class="col"></div>
