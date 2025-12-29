@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-m*0)#_3c%52w9w-=fs(t(ue2jziu^)wnesejpaoekdq1q-8v3i"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['abdullaxamrayev.pythonanywhere.com']
+ALLOWED_HOSTS = []  # 'abdullaxamrayev.pythonanywhere.com'
 
 
 # Application definition
@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+	'ckeditor',
+	'ckeditor_uploader'
 ]
 
 MIDDLEWARE = [
@@ -119,8 +121,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
+CKEDITOR_RESTRICT_BY_USER = True
 STATIC_URL = "/static/"
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = [str(BASE_DIR.joinpath('static'))]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
@@ -143,3 +148,12 @@ EMAIL_USE_TLS = True
 
 EMAIL_HOST_USER = 'abdullacoder17@gmail.com'
 EMAIL_HOST_PASSWORD = 'mvbt vklb dinx tzts'
+
+
+CKEDITOR_UPLOAD_PATH = "uploads/"
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'Full',
+    },
+}

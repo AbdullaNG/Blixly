@@ -31,7 +31,7 @@
 				<a href="#" class="text-decoration-none link-dark">
 					<h2 class="fw-bold mb-3">{{ post.title }}</h2>
 				</a>
-				<h4>{{ post.content }}</h4>
+				<h4>{{ post.content|safe }}</h4>
 				<div class="mt-4 text-muted h6">{{ post.date_posted }}</div>
 			</div>
 			<div class="my-3 p-3 rounded" style="background-color: #fffdd0; word-wrap: break-word; overflow-wrap: break-word;">
@@ -39,6 +39,7 @@
 				<hr>
 				<form method="post">
 					{% csrf_token %}
+					{{ comment_form.media }}
 					{{ comment_form|crispy }}
 					{% if user.is_authenticated %}
 					<button class="btn btn-primary" type="submit">Post Comment</button>
@@ -65,7 +66,7 @@
 						</div>
 						{% endif %}
 					</div>
-					<h4>{{ comment.content }}</h4>
+					<h4>{{ comment.content|safe }}</h4>
 					<div class="mt-4 text-muted h6">{{ comment.created_at }}</div>
 				</div>
 				{% empty %}

@@ -1,11 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
+from ckeditor.fields import RichTextField
 
 
 class Post(models.Model):
 	title = models.CharField(max_length=100)
-	content = models.TextField()
+	content = RichTextField()
 	author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
 	date_posted = models.DateTimeField(auto_now_add=True)
 	likes = models.ManyToManyField(User, related_name='likes', blank=True)
@@ -20,7 +21,7 @@ class Post(models.Model):
 class Comment(models.Model):
 	post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
 	author = models.ForeignKey(User, on_delete=models.CASCADE)
-	content = models.TextField()
+	content = RichTextField()
 	created_at = models.DateTimeField(auto_now_add=True)
 
 	class Meta:

@@ -23,7 +23,7 @@
 						<a href="{% url 'post-detail' post.pk %}" class="text-decoration-none link-dark">
 							<h2 class="fw-bold mb-3">{{ post.title }}</h2>
 						</a>
-						<h4>{{ post.content }}</h4>
+						<h4>{{ post.content|safe }}</h4>
 						<div class="mt-4 text-muted h6">{{ post.date_posted }}</div>
 					</div>
 				</div>
