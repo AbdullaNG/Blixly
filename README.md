@@ -89,16 +89,3 @@ python manage.py runserver
 
 Open your browser and go to:  
 http://127.0.0.1:8000/
-
-
-
-## 🔑 Admin Panel
-
-Access the admin panel at:  
-http://127.0.0.1:8000/admin/
-
-The admin panel allows management of:
-- Users
-- Blog posts
-- Comments
-- Likes
