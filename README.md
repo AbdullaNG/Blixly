@@ -2,6 +2,9 @@
 
 Blixly is a full-featured blog web application built with Django. It allows users to create and manage blog posts, interact through comments and likes, and includes an admin panel for content management.
 
+
+Live Demo: https://abdullaxamrayev.pythonanywhere.com/
+
 ## 📸 Screenshots
 
 ### Home Page
