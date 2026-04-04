@@ -11,6 +11,7 @@ router.register(r'comments', CommentAPIViewSet, basename='comment')
 
 urlpatterns = [
     path('api/register', RegisterAPIView.as_view(), name='api-register'),
+    path('api/profile', ProfileAPIView.as_view(), name='api-profile'),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
