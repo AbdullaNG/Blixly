@@ -20,6 +20,11 @@ Live Demo: https://abdullaxamrayev.pythonanywhere.com/
 <img width="1898" height="781" alt="image" src="https://github.com/user-attachments/assets/6b1ad239-45b0-412b-9031-d1867b328c78" />
 
 
+### API Docs
+<img width="1899" height="1072" alt="image" src="https://github.com/user-attachments/assets/6993bdb2-ebb4-426d-a73b-f2c3bfd53d06" />
+
+
+
 ## 🚀 Features
 
 - User Authentication (Sign up, Login, Logout)
@@ -30,10 +35,11 @@ Live Demo: https://abdullaxamrayev.pythonanywhere.com/
 - Like and Unlike posts
 - Django Admin Panel
 - Responsive UI using Bootstrap
+- REST API
 
 ## 🧰 Tech Stack
 
-- Backend: Django (Python)
+- Backend: Django (Python), Django Rest Framework
 - Frontend: HTML, CSS, Bootstrap
 - Database: SQLite
 
