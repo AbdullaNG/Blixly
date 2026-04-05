@@ -8,16 +8,15 @@ Live Demo: https://abdullaxamrayev.pythonanywhere.com/
 ## 📸 Screenshots
 
 ### Home Page
-<img width="1900" height="708" alt="image" src="https://github.com/user-attachments/assets/b1c851aa-1227-4099-8e90-49f45bbb24aa" />
+<img width="1898" height="868" alt="image" src="https://github.com/user-attachments/assets/25db368e-55a6-431c-a762-b8e8b16863fc" />
 
 
 ### Post Detail Page
-<img width="1898" height="690" alt="image" src="https://github.com/user-attachments/assets/edb62236-5731-467f-a021-bacd496e66c4" />
-<img width="1894" height="861" alt="image" src="https://github.com/user-attachments/assets/226ad941-2fba-497e-8dd7-1b2e6d6de007" />
+<img width="1900" height="863" alt="image" src="https://github.com/user-attachments/assets/fbb361e9-a806-4f6b-b028-f1b23c3d97d4" />
 
 
 ### Profile Page
-<img width="1898" height="781" alt="image" src="https://github.com/user-attachments/assets/6b1ad239-45b0-412b-9031-d1867b328c78" />
+<img width="1898" height="862" alt="image" src="https://github.com/user-attachments/assets/dc4df566-c763-478a-babc-6f1e149910a3" />
 
 
 ### API Docs
